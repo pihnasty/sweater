@@ -2,7 +2,7 @@
 <#import "parts/login.ftl" as l>
 
 <@c.page>
-    Add new user
+    <diw class="mb-1" >Add new user</diw>
     ${message?ifExists}
-    <@l.login "/registration" />
+    <@l.login "/registration" true/>
 </@c.page>
