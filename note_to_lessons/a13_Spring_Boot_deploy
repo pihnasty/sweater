@@ -1,0 +1,559 @@
+Impotant!!!
+
+Connect to linux ssh
+1. generated into local machine private and public keys. They will be lay into directory: C:\Users\POM\.ssh
+2.
+Создайте на linux пустой файл  /домашний_каталог/.ssh/authorized_keys  :  https://firstvds.ru/technology/dobavit-ssh-klyuch
+Copy in file  "authorized_keys" on the linux-machine(pom@192.168.254.131) the text of the public key.
+3. printing in git-bash
+POM@Home_POM MINGW64 ~
+$ ssh pom@192.168.254.131
+
+
+
+
+1. To take IP-adress ubuntu vm machine
+https://qastack.ru/superuser/433988/how-to-find-the-ip-address-of-a-vm-running-on-vmware-or-other-methods-of-using-vm#:~:text=%D0%A1%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0%20%D0%B7%D0%B0%D0%B9%D0%B4%D0%B8%D1%82%D0%B5%20%D0%B2%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9,%C2%BB%20%D0%B8%20%D0%BF%D1%80%D0%BE%D1%87%D0%B8%D1%82%D0%B0%D0%B9%D1%82%D0%B5%20MAC%2D%D0%B0%D0%B4%D1%80%D0%B5%D1%81.&text=%D0%9D%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%20MAC%2D%D0%B0%D0%B4%D1%80%D0%B5%D1%81%20%D0%B8%20IP%20%D0%B1%D1%83%D0%B4%D0%B5%D1%82%20%D0%BD%D0%B0%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%B5.
+
+2. if you became:
+POM@Home_POM MINGW64 ~
+$ ssh pom@192.168.254.131
+ssh: connect to host 192.168.254.131 port 22: Connection refused
+
+open terminal   Ctrl+Alt+T
+
+a) check openssh-server
+https://askubuntu.com/questions/144364/ssh-connect-to-host-myremotehost-com-port-22-connection-refused
+b) if it needed so
+install into VM openssh-server
+https://askubuntu.com/questions/144364/ssh-connect-to-host-myremotehost-com-port-22-connection-refused
+c) sudo service ssh start
+    (if you want so service start automatically:  sudo systemctl enable sshd
+    https://losst.ru/ustanovka-ssh-ubuntu-16-04
+    )
+
+3.Создание SSH-ключей в Linux на примере CentOS
+https://firstvds.ru/technology/dobavit-ssh-klyuch
+a)yum -y install openssh-server openssh-clients
+b)ssh-keygen
+
+pom@ubuntu:~$ ls -la ~/.ssh/authorized_keys
+-rw------- 1 pom pom 0 Sep  6 07:59 /home/pom/.ssh/authorized_keys
+pom@ubuntu:~$
+
+https://aws.amazon.com/ru/premiumsupport/knowledge-center/ec2-linux-fix-permission-denied-errors/
+
+https://www.digitalocean.com/community/questions/error-permission-denied-publickey-when-i-try-to-ssh
+https://firstvds.ru/technology/dobavit-ssh-klyuch
+https://wiki.gentoo.org/wiki/Nano/Basics_Guide
+https://askubuntu.com/questions/315377/ssh-error-permission-denied-please-try-again
+
+
+chmod 600
+https://ru.wikipedia.org/wiki/Chmod
+
+
+
+
+
+POM@Home_POM MINGW64 ~
+$ ssh pom@192.168.254.131
+ssh: connect to host 192.168.254.131 port 22: Connection refused
+
+POM@Home_POM MINGW64 ~
+$ ^C
+
+POM@Home_POM MINGW64 ~
+$ ssh pom@192.168.254.131
+The authenticity of host '192.168.254.131 (192.168.254.131)' can't be established.
+ECDSA key fingerprint is SHA256:lmvfqQhGZdKYEutOJo95HOShmLVzNvOEAhLYTWjm0wg.
+Are you sure you want to continue connecting (yes/no)? y
+Please type 'yes' or 'no': yes
+Warning: Permanently added '192.168.254.131' (ECDSA) to the list of known hosts.
+pom@192.168.254.131's password:
+Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-20-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+717 packages can be updated.
+437 updates are security updates.
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+pom@ubuntu:~$ ^C
+pom@ubuntu:~$ ls ~/.ssh/autorized_keys
+ls: cannot access '/home/pom/.ssh/autorized_keys': No such file or directory
+pom@ubuntu:~$ ls ~/.ssh/authorized_keys
+ls: cannot access '/home/pom/.ssh/authorized_keys': No such file or directory
+pom@ubuntu:~$ ls ~/.ssh
+pom@ubuntu:~$ ls ~/.ssh/
+pom@ubuntu:~$ ls
+54  Desktop  Documents  Downloads  examples.desktop  Music  Pictures  Public  Templates  Videos
+pom@ubuntu:~$ cd/etc/ssh
+-bash: cd/etc/ssh: No such file or directory
+pom@ubuntu:~$ cd /etc/ssh
+pom@ubuntu:/etc/ssh$ ls
+moduli       ssh_host_ecdsa_key      ssh_host_ed25519_key.pub  ssh_import_id
+ssh_config   ssh_host_ecdsa_key.pub  ssh_host_rsa_key
+sshd_config  ssh_host_ed25519_key    ssh_host_rsa_key.pub
+pom@ubuntu:/etc/ssh$ ll authorized_keys
+ls: cannot access 'authorized_keys': No such file or directory
+pom@ubuntu:/etc/ssh$ cd root
+-bash: cd: root: No such file or directory
+pom@ubuntu:/etc/ssh$ cd..
+cd..: command not found
+pom@ubuntu:/etc/ssh$ ..cd
+..cd: command not found
+pom@ubuntu:/etc/ssh$ .cd
+
+Command '.cd' not found, did you mean:
+
+  command 'bcd' from deb bsdgames
+  command 'hcd' from deb hfsutils
+  command 'mcd' from deb mtools
+
+Try: sudo apt install <deb name>
+
+pom@ubuntu:/etc/ssh$ cd /etc
+pom@ubuntu:/etc$ cd /
+pom@ubuntu:/$ ls ~/.ssh/authorized_keys
+ls: cannot access '/home/pom/.ssh/authorized_keys': No such file or directory
+pom@ubuntu:/$ ls -la ~/.ssh/authorized_keys
+ls: cannot access '/home/pom/.ssh/authorized_keys': No such file or directory
+pom@ubuntu:/$ ls
+bin    dev   initrd.img      lib64       mnt   root  snap      sys  var
+boot   etc   initrd.img.old  lost+found  opt   run   srv       tmp  vmlinuz
+cdrom  home  lib             media       proc  sbin  swapfile  usr
+pom@ubuntu:/$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/pom/.ssh/id_rsa): authorized_keys
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Saving key "authorized_keys" failed: passphrase is too short (minimum five characters)
+pom@ubuntu:/$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/pom/.ssh/id_rsa): authorized_keys
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Saving key "authorized_keys" failed: Permission denied
+pom@ubuntu:/$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/pom/.ssh/id_rsa): ^C
+pom@ubuntu:/$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/pom/.ssh/id_rsa): authorized_keys
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Saving key "authorized_keys" failed: Permission denied
+pom@ubuntu:/$ sudo chown root:root /home
+[sudo] password for pom:
+pom@ubuntu:/$ sudo chmod 755 /home
+pom@ubuntu:/$ ^C
+pom@ubuntu:/$
+
+
+
+----------------------------------  Deploy -----------------------------------------------------------------------------
+
+POM@Home_POM MINGW64 ~
+$ cd D:/A/springboot
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ chmod +x scripts/deploy.sh
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ ./scripts/deploy.sh
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------< com.example:sweater >-------------------------
+[INFO] Building sweater 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ sweater ---
+[INFO] Deleting D:\A\springboot\target
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ sweater                                         ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 15 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ sweater ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to D:\A\springboot\target\classes
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConf                                        ig.java: D:\A\springboot\src\main\java\com\example\sweater\config\WebSecurityCon                                        fig.java uses or overrides a deprecated API.
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConf                                        ig.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:testResources (default-testResources) @                                         sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\A\springboot\src\test\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ sweat                                        er ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ sweater ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ sweater ---
+[INFO] Building jar: D:\A\springboot\target\sweater-1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:2.0.0.RELEASE:repackage (default) @ sweater                                         ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.840 s
+[INFO] Finished at: 2020-09-09T23:18:57+03:00
+[INFO] ------------------------------------------------------------------------
+Copy files... scp -i -/.ssh/id_rsa \
+usage: scp [-346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
+           [-l limit] [-o ssh_option] [-P port] [-S program] source ... target
+Restart server... scp -i -/.ssh/id_rsa \
+usage: scp [-346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
+           [-l limit] [-o ssh_option] [-P port] [-S program] source ... target
+Bye
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ ssh pom@192.168.254.131
+Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-115-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+403 packages can be updated.
+125 updates are security updates.
+
+Last login: Wed Sep  9 10:13:47 2020 from 192.168.254.1
+pom@ubuntu:~$ ls -al
+total 116
+drwx------ 21 pom  pom  4096 Sep  9 12:15 .
+drwxr-xr-x  4 root root 4096 Sep  9 12:13 ..
+drwxr-xr-x  2 pom  pom  4096 Jun 24  2018 54
+-rw-------  1 pom  pom  2298 Sep  9 13:06 .bash_history
+-rw-r--r--  1 pom  pom   220 Jun 24  2018 .bash_logout
+-rw-r--r--  1 pom  pom  3771 Jun 24  2018 .bashrc
+drwx------ 19 pom  pom  4096 Sep  9 01:07 .cache
+drwx------ 16 pom  pom  4096 Sep  9 01:26 .config
+drwxr-xr-x  3 pom  pom  4096 Sep  9 12:21 Desktop
+drwxr-xr-x  2 pom  pom  4096 Jun 24  2018 Documents
+drwxr-xr-x  2 pom  pom  4096 Jun 24  2018 Downloads
+-rw-r--r--  1 pom  pom  8980 Jun 24  2018 examples.desktop
+drwx------  3 pom  pom  4096 Jun 24  2018 .gnome
+drwx------  3 pom  pom  4096 Jun 24  2018 .gnupg
+-rw-------  1 pom  pom  1912 Sep  9 10:12 .ICEauthority
+drwx------  3 pom  pom  4096 Jun 24  2018 .local
+drwx------  5 pom  pom  4096 Jun 24  2018 .mozilla
+drwxr-xr-x  2 pom  pom  4096 Jun 24  2018 Music
+drwxr-xr-x  2 pom  pom  4096 Jun 24  2018 Pictures
+drwx------  3 pom  pom  4096 Jun 24  2018 .pki
+-rw-r--r--  1 pom  pom   807 Jun 24  2018 .profile
+drwxr-xr-x  2 pom  pom  4096 Jun 24  2018 Public
+drwx------  2 pom  pom  4096 Sep  9 01:28 .ssh
+-rw-r--r--  1 pom  pom     0 Sep  6 05:19 .sudo_as_admin_successful
+drwxr-xr-x  2 pom  pom  4096 Jun 24  2018 Templates
+drwx------  4 pom  pom  4096 Jun 24  2018 .thunderbird
+drwxrwxr-x  2 pom  pom  4096 Sep  9 10:50 uploads
+drwxr-xr-x  2 pom  pom  4096 Jun 24  2018 Videos
+pom@ubuntu:~$ chmod 777 +x ~/scripts/deploy.sh
+chmod: cannot access '+x': No such file or directory
+chmod: cannot access '/home/pom/scripts/deploy.sh': No such file or directory
+pom@ubuntu:~$ exit
+logout
+Connection to 192.168.254.131 closed.
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ chmod +x scripts/deploy.sh
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ ssh pom@192.168.254.131
+Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-115-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+403 packages can be updated.
+125 updates are security updates.
+
+Last login: Wed Sep  9 13:25:55 2020 from 192.168.254.1
+pom@ubuntu:~$ exit
+logout
+Connection to 192.168.254.131 closed.
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ chmod +x scripts/deploy.sh
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ ./scripts/deploy.sh
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------< com.example:sweater >-------------------------
+[INFO] Building sweater 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ sweater ---
+[INFO] Deleting D:\A\springboot\target
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 15 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ sweater ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to D:\A\springboot\target\classes
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConfig.java: D:\A\springboot\src\main\java\com\example\sweater\config\WebSecurityConfig.java uses or overrides a deprecated API.
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConfig.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:testResources (default-testResources) @ sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\A\springboot\src\test\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ sweater ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ sweater ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ sweater ---
+[INFO] Building jar: D:\A\springboot\target\sweater-1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:2.0.0.RELEASE:repackage (default) @ sweater ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.014 s
+[INFO] Finished at: 2020-09-09T23:35:21+03:00
+[INFO] ------------------------------------------------------------------------
+Copy files... scp -i -/.ssh/id_rsa \
+usage: scp [-346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
+           [-l limit] [-o ssh_option] [-P port] [-S program] source ... target
+Restart server... scp -i -/.ssh/id_rsa \
+usage: scp [-346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
+           [-l limit] [-o ssh_option] [-P port] [-S program] source ... target
+Bye
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ chmod +x scripts/deploy.sh
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ ./scripts/deploy.sh
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------< com.example:sweater >-------------------------
+[INFO] Building sweater 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ sweater ---
+[INFO] Deleting D:\A\springboot\target
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 15 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ sweater ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to D:\A\springboot\target\classes
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConfig.java: D:\A\springboot\src\main\java\com\example\sweater\config\WebSecurityConfig.java uses or overrides a deprecated API.
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConfig.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:testResources (default-testResources) @ sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\A\springboot\src\test\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ sweater ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ sweater ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ sweater ---
+[INFO] Building jar: D:\A\springboot\target\sweater-1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:2.0.0.RELEASE:repackage (default) @ sweater ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.543 s
+[INFO] Finished at: 2020-09-09T23:37:08+03:00
+[INFO] ------------------------------------------------------------------------
+Copy files... scp -i -/.ssh/id_rsa \
+Warning: Identity file -/.ssh/id_rsa not accessible: No such file or directory.
+sweater-1.0-SNAPSHOT.jar                                                              100%   34MB  56.8MB/s   00:00
+Restart server... scp -i -/.ssh/id_rsa \
+Bye
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ chmod +x scripts/deploy.sh
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ ./scripts/deploy.sh
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------< com.example:sweater >-------------------------
+[INFO] Building sweater 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ sweater ---
+[INFO] Deleting D:\A\springboot\target
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 15 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ sweater ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to D:\A\springboot\target\classes
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConfig.java: D:\A\springboot\src\main\java\com\example\sweater\config\WebSecurityConfig.java uses or overrides a deprecated API.
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConfig.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:testResources (default-testResources) @ sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\A\springboot\src\test\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ sweater ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ sweater ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ sweater ---
+[INFO] Building jar: D:\A\springboot\target\sweater-1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:2.0.0.RELEASE:repackage (default) @ sweater ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.601 s
+[INFO] Finished at: 2020-09-09T23:38:36+03:00
+[INFO] ------------------------------------------------------------------------
+Copy files... scp -i -/.ssh/id_rsa \
+sweater-1.0-SNAPSHOT.jar                                                              100%   34MB  61.8MB/s   00:00
+Restart server... scp -i -/.ssh/id_rsa \
+Bye
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ chmod +x scripts/deploy.sh
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ ./scripts/deploy.sh
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------< com.example:sweater >-------------------------
+[INFO] Building sweater 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ sweater ---
+[INFO] Deleting D:\A\springboot\target
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 15 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ sweater ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to D:\A\springboot\target\classes
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConfig.java: D:\A\springboot\src\main\java\com\example\sweater\config\WebSecurityConfig.java uses or overrides a deprecated API.
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConfig.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:testResources (default-testResources) @ sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\A\springboot\src\test\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ sweater ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ sweater ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ sweater ---
+[INFO] Building jar: D:\A\springboot\target\sweater-1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:2.0.0.RELEASE:repackage (default) @ sweater ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.797 s
+[INFO] Finished at: 2020-09-09T23:45:14+03:00
+[INFO] ------------------------------------------------------------------------
+Copy files... scp -i -/.ssh/id_rsa \
+sweater-1.0-SNAPSHOT.jar                                                              100%   34MB  51.1MB/s   00:00
+Restart server... scp -i -/.ssh/id_rsa \
+Bye
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ chmod +x scripts/deploy.sh
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$ ./scripts/deploy.sh
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------< com.example:sweater >-------------------------
+[INFO] Building sweater 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ sweater ---
+[INFO] Deleting D:\A\springboot\target
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 15 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ sweater ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to D:\A\springboot\target\classes
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConfig.java: D:\A\springboot\src\main\java\com\example\sweater\config\WebSecurityConfig.java uses or overrides a deprecated API.
+[INFO] /D:/A/springboot/src/main/java/com/example/sweater/config/WebSecurityConfig.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- maven-resources-plugin:3.0.1:testResources (default-testResources) @ sweater ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\A\springboot\src\test\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ sweater ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ sweater ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ sweater ---
+[INFO] Building jar: D:\A\springboot\target\sweater-1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:2.0.0.RELEASE:repackage (default) @ sweater ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.195 s
+[INFO] Finished at: 2020-09-09T23:48:28+03:00
+[INFO] ------------------------------------------------------------------------
+Copy files... scp -i -/.ssh/id_rsa \
+sweater-1.0-SNAPSHOT.jar                                                              100%   34MB  56.9MB/s   00:00
+Restart server... scp -i -/.ssh/id_rsa \
+Bye
+
+POM@Home_POM MINGW64 /d/A/springboot (develop)
+$
